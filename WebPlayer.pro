@@ -7,7 +7,8 @@ qtHaveModule(webengine) {
         DEFINES += QT_WEBVIEW_WEBENGINE_BACKEND
 }
 
-SOURCES += main.cpp
+SOURCES += main.cpp \
+    appmanager.cpp
 
 RESOURCES += qml.qrc
 
@@ -16,3 +17,6 @@ QML_IMPORT_PATH =
 
 # Default rules for deployment.
 include(deployment.pri)
+
+HEADERS += \
+    appmanager.h

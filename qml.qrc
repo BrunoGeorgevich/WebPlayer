@@ -2,4 +2,11 @@
     <qresource prefix="/">
         <file>main.qml</file>
     </qresource>
+    <qresource prefix="/assets">
+        <file alias="back.png">assets/back.png</file>
+        <file alias="next.png">assets/next.png</file>
+        <file alias="reload.png">assets/reload.png</file>
+        <file alias="error.png">assets/error.png</file>
+        <file alias="error.html">assets/error.html</file>
+    </qresource>
 </RCC>
