@@ -1,6 +1,7 @@
 import QtQuick 2.4
-import QtQuick.Controls 1.3
 import QtQuick.Window 2.2
+import QtQuick.Dialogs 1.2
+import QtQuick.Controls 1.3
 
 import QtWebEngine 1.1
 
@@ -59,9 +60,12 @@ ApplicationWindow {
             id:navigator
             anchors.fill: parent
 
-            onLinkHovered: {
-                console.log(hoveredUrl)
-            }
+            property string downloadPath : "/home/bruno/Downloads/"
+
+            profile.onDownloadRequested : {
+                    download.path = downloadPath + download.id
+                    download.accept()
+                }
         }
 
         Image {
@@ -139,5 +143,9 @@ ApplicationWindow {
                 onClicked: navigator.goForward()
             }
         }
+    }
+
+    FileDialog {
+        id:downloadDialog
     }
 }
