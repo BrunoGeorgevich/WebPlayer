@@ -1,9 +1,12 @@
 import QtQuick 2.4
 import QtQuick.Window 2.2
+import QtQuick.Layouts 1.1
 import QtQuick.Dialogs 1.2
 import QtQuick.Controls 1.3
 
 import QtWebEngine 1.1
+
+import "qrc:/components"
 
 ApplicationWindow {
     id:root
@@ -16,12 +19,8 @@ ApplicationWindow {
 
 
     Component.onCompleted: {
-
-        var error = _descriptor.readApp();
-
-        if(!error) {
-            navigator.url = "qrc:/assets/error.html"
-        }
+        var error = _descriptor.readApp()
+        if(!error) navigator.url = "qrc:/assets/error.html"
     }
 
     Item {
@@ -63,9 +62,13 @@ ApplicationWindow {
             property string downloadPath : "/home/bruno/Downloads/"
 
             profile.onDownloadRequested : {
-                    download.path = downloadPath + download.id
-                    download.accept()
-                }
+                downloadDialog.open()
+                download.accept()
+            }
+
+            profile.onDownloadFinished : {
+                downloadDialog.downlaodFinished()
+            }
         }
 
         Image {
@@ -145,7 +148,7 @@ ApplicationWindow {
         }
     }
 
-    FileDialog {
+    DownloadDialog {
         id:downloadDialog
     }
 }
