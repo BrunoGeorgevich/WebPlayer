@@ -69,6 +69,10 @@ ApplicationWindow {
             profile.onDownloadFinished : {
                 downloadDialog.downlaodFinished()
             }
+
+            onFullScreenRequested: {
+                        request.accept()
+                    }
         }
 
         Image {
