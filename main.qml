@@ -22,10 +22,20 @@ ApplicationWindow {
         var error = _descriptor.readApp()
         if(!error) navigator.url = "qrc:/assets/error.html"
     }
+    TopBar {
+        id:topBar
+        width:parent.width
+        height:parent.height/20
+        color:"#09A"
+        z:1
+    }
 
     Item {
 
-        anchors.fill: parent
+        anchors {
+            fill:parent
+        }
+
         focus: true
 
         Keys.onPressed: {
@@ -71,83 +81,7 @@ ApplicationWindow {
             }
 
             onFullScreenRequested: {
-                        request.accept()
-                    }
-        }
-
-        Image {
-            id:goBackArrow
-
-            source:"qrc:/assets/back.png"
-            fillMode: Image.PreserveAspectFit
-            antialiasing: true
-
-            anchors {
-                top:parent.top
-                left:parent.left
-                topMargin: parent.height/200
-                leftMargin: parent.width/200
-            }
-
-            visible:navigator.canGoBack
-
-            width:parent.width/45
-            height:width
-
-            MouseArea {
-                anchors.fill : parent
-
-                onClicked: navigator.goBack()
-            }
-        }
-
-        Image {
-            id:refreshButton
-
-            source:"qrc:/assets/reload.png"
-            fillMode: Image.PreserveAspectFit
-            antialiasing: true
-
-            anchors {
-                top:parent.top
-                left:goBackArrow.right
-                topMargin: parent.height/200
-                leftMargin: parent.width/200
-            }
-
-            width:parent.width/45
-            height:width
-
-            MouseArea {
-                anchors.fill : parent
-
-                onClicked: navigator.reload()
-            }
-        }
-
-        Image {
-            id:goFowardArrow
-
-            source:"qrc:/assets/next.png"
-            fillMode: Image.PreserveAspectFit
-            antialiasing: true
-
-            anchors {
-                top:parent.top
-                left:refreshButton.right
-                topMargin: parent.height/200
-                leftMargin: parent.width/200
-            }
-
-            visible:navigator.canGoForward
-
-            width:parent.width/45
-            height:width
-
-            MouseArea {
-                anchors.fill : parent
-
-                onClicked: navigator.goForward()
+                request.accept()
             }
         }
     }

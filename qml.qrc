@@ -4,6 +4,7 @@
     </qresource>
     <qresource prefix="/components">
         <file alias="DownloadDialog.qml">components/DownloadDialog.qml</file>
+        <file alias="TopBar.qml">components/TopBar.qml</file>
     </qresource>
     <qresource prefix="/assets">
         <file alias="back.png">assets/back.png</file>
